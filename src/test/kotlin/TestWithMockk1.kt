@@ -26,7 +26,7 @@ class TestWithMockk1 {
 
         assertEquals(11, actual)
 
-        verify(exactly = 1) {
+        verify(exactly = 0) {
             doc1.value1
             doc2.value2
         }
