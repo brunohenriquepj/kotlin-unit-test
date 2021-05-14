@@ -13,4 +13,3 @@
 ## Test
 
      ./gradlew test --stacktrace
-
