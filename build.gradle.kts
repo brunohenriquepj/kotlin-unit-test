@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test-junit"))
+    implementation("io.mockk:mockk:1.11.0")
 }
 
 tasks.test {
