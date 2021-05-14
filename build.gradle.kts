@@ -27,10 +27,29 @@ tasks.jacocoTestReport {
     dependsOn(tasks.test)
 }
 
+jacoco {
+    toolVersion = "0.8.6"
+    //reportsDirectory.set(layout.buildDirectory.dir("customJacocoReportDir"))
+}
+
+tasks.jacocoTestReport {
+    reports {
+        csv.isEnabled = false
+        xml.isEnabled = true
+        html.isEnabled = true
+        //html.destination = layout.buildDirectory.dir("jacocoHtml").get().asFile
+    }
+}
+
+tasks.register<JacocoReport>("applicationCodeCoverageReport") {
+    executionData(tasks.run.get())
+    sourceSets(sourceSets.main.get())
+}
+
 tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "11"
 }
 
 application {
-    mainClassName = "MainKt"
+    mainClass.set("MainKt")
 }
