@@ -27,7 +27,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --exclude-task test
 
       - name: Test
         run: ./gradlew test
