@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.5.0"
     application
+    jacoco
 }
 
 group = "me.bruno"
@@ -19,6 +20,11 @@ dependencies {
 
 tasks.test {
     useJUnit()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
 }
 
 tasks.withType<KotlinCompile>() {
