@@ -162,6 +162,15 @@ jobs:
           name: coverage-reports
           path: build/reports/jacoco/test/
 
+      - name: list project files
+        run: |
+          echo "show current path:"
+          pwd
+          echo "list current path files:"
+          ls -a
+          echo "show current path tree:"
+          tree
+
       - name: Publish metrics
         uses: sonarsource/sonarcloud-github-action@master
         env:
