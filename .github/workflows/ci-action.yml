@@ -143,6 +143,13 @@ jobs:
           key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle-caches-
 
+      - name: Setup Gradle Wrapper cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-wrapper-
+
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
@@ -154,13 +161,6 @@ jobs:
         with:
           name: coverage-reports
           path: build/reports/jacoco/test/
-
-      - name: Setup Gradle Wrapper cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}
-          restore-keys: ${{ runner.os }}-gradle-wrapper-
 
       - name: Publish metrics
         uses: sonarsource/sonarcloud-github-action@master
