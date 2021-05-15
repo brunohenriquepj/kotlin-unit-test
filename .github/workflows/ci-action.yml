@@ -30,7 +30,7 @@ jobs:
       - name: Fetch sources
         uses: actions/checkout@v2
 
-      - name: Setup Gradle depedencies cache
+      - name: Setup Gradle dependencies cache
         uses: actions/cache@v2
         with:
           path: ~/.gradle/caches
@@ -70,7 +70,7 @@ jobs:
       - name: Fetch sources
         uses: actions/checkout@v2
 
-      - name: Setup Gradle depedencies cache
+      - name: Setup Gradle dependencies cache
         uses: actions/cache@v2
         with:
           path: ~/.gradle/caches
@@ -136,7 +136,7 @@ jobs:
       - name: Fetch sources
         uses: actions/checkout@v2
 
-      - name: Setup Gradle depedencies cache
+      - name: Setup Gradle dependencies cache
         uses: actions/cache@v2
         with:
           path: ~/.gradle/caches
