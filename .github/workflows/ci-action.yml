@@ -93,10 +93,10 @@ jobs:
       - name: Test
         run: ./gradlew test
 
-      - name: Upload coverage reports
+      - name: Upload coverage report
         uses: actions/upload-artifact@v2
         with:
-          name: coverage-reports
+          name: coverage-report
           path: build/reports/jacoco/test/jacocoTestReport.xml
           if-no-files-found: error
 
@@ -110,10 +110,10 @@ jobs:
       - name: Fetch sources
         uses: actions/checkout@v2
 
-      - name: Download coverage reports
+      - name: Download coverage report
         uses: actions/download-artifact@v2
         with:
-          name: coverage-reports
+          name: coverage-report
           path: build/reports/jacoco/test/jacocoTestReport.xml
 
       - name: Publish code coverage
@@ -162,10 +162,10 @@ jobs:
           name: package
           path: build/libs
 
-      - name: Download coverage reports
+      - name: Download coverage report
         uses: actions/download-artifact@v2
         with:
-          name: coverage-reports
+          name: coverage-report
           path: build/reports/jacoco/test/jacocoTestReport.xml
 
       - name: Publish metrics
