@@ -124,7 +124,7 @@ jobs:
           flags: unittest # optional
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
-          verbose: false # optional (default = false)
+          verbose: true # optional (default = false)
 
   sonarcloud-scan:
     name: Publish metrics to Sonar Cloud
