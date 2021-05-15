@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: package
-          path: build/libs
+          path: ./build/libs
           if-no-files-found: error
 
   test:
@@ -97,7 +97,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage-report
-          path: build/reports/jacoco/test/jacocoTestReport.xml
+          path: ./build/reports/jacoco/test/jacocoTestReport.xml
           if-no-files-found: error
 
   codecov:
@@ -114,13 +114,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage-report
-          path: build/reports/jacoco/test/jacocoTestReport.xml
+          path: ./build/reports/jacoco/test/jacocoTestReport.xml
 
       - name: Publish code coverage
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          files: build/reports/jacoco/test/jacocoTestReport.xml # optional
+          files: ./build/reports/jacoco/test/jacocoTestReport.xml # optional
           flags: unittest # optional
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
@@ -160,13 +160,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: package
-          path: build/libs
+          path: ./build/libs
 
       - name: Download coverage report
         uses: actions/download-artifact@v2
         with:
           name: coverage-report
-          path: build/reports/jacoco/test/jacocoTestReport.xml
+          path: ./build/reports/jacoco/test/jacocoTestReport.xml
 
       - name: Publish metrics
         uses: sonarsource/sonarcloud-github-action@v1.6
