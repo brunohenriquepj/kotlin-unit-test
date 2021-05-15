@@ -35,7 +35,7 @@ jacoco {
 tasks.jacocoTestReport {
     reports {
         csv.isEnabled = false
-        xml.isEnabled = true
+        xml.isEnabled = false
         html.isEnabled = true
         //html.destination = layout.buildDirectory.dir("jacocoHtml").get().asFile
     }
