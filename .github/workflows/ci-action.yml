@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: package
-          path: build/libs
+          path: build
           if-no-files-found: error
 
   test:
@@ -154,7 +154,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: package
-          path: build/libs
+          path: build
 
       - name: Download coverage reports
         uses: actions/download-artifact@v2
