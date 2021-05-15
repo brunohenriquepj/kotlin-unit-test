@@ -1,7 +1,5 @@
-
 name: CI
 
-# Controls when the action will run. 
 on:
   push:
     branches: [ main ]
@@ -11,12 +9,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
+    name: Build app
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
 
@@ -29,17 +26,44 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build --exclude-task test
 
+  test:
+    name: Execute unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
       - name: Test
         run: ./gradlew test
+
+  codecov:
+    name: Publish code coverage to codecov
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
 
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          files: build/reports/jacoco/test/html/index.html # optional
+          # files: build/reports/jacoco/test/html/index.html # optional
           flags: unittests # optional
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
-          verbose: true # optional (default = false)
+          verbose: false # optional (default = false)
+
+  sonarcloud-scan:
+    name: Publish metrics to Sonar Cloud
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
