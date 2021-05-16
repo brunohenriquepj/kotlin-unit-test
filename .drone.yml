@@ -19,5 +19,4 @@ steps:
         from_secret: CODECOV_TOKEN
       files:
         - build/reports/jacoco/test/html/index.html
-      verbose: true
       required: true
