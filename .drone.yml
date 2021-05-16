@@ -15,7 +15,11 @@ steps:
   - name: coverage
     image: plugins/codecov
     settings:
+      token: TOKEN
       files:
         - index.html
       paths:
         - build/reports/jacoco/test/html
+    environment:
+      TOKEN:
+        from_secret: CODECOV_TOKEN
