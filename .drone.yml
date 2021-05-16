@@ -17,9 +17,7 @@ steps:
     settings:
       token: TOKEN
       files:
-        - index.html
-      paths:
-        - build/reports/jacoco/test/html
+        - build/reports/jacoco/test/html/index.html
     environment:
       TOKEN:
         from_secret: CODECOV_TOKEN
