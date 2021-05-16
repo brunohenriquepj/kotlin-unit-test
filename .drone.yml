@@ -1,0 +1,22 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: build
+    image: gradle:7.0.2-jdk11-hotspot
+    commands:
+      - gradle build --exclude-task test
+
+  - name: test
+    image: gradle:7.0.2-jdk11-hotspot
+    commands:
+      - gradle test
+
+  - name: coverage
+    image: plugins/codecov
+    settings:
+      token:
+        from_secret: CODECOV_TOKEN
+      files:
+        - build/reports/jacoco/test/html/index.html
+      required: true

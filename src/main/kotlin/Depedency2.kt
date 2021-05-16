@@ -1,0 +1,1 @@
+class Depedency2(val value2: String)
